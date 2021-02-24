@@ -65,7 +65,7 @@ def main(args=None):
         trainer.train(epoch)
         trainer.test(epoch)
 
-        if epoch % 1 == 0:
+        if epoch % 10 == 0:
             save_model(model, epoch)
             load_model(model, epoch)
 
