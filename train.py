@@ -69,7 +69,7 @@ def main(args=None):
             save_model(model, epoch)
             load_model(model, epoch)
 
-    return model
+    return model, os.path.join("weights", model.args.timestamp)
 
 if __name__ == "__main__":
     main()
