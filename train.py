@@ -19,7 +19,6 @@ def main(args=None):
     parser.add_argument("--iters_to_accumulate", type=int, default=1)
     parser.add_argument("--B", type=int, default=64)
     parser.add_argument("--T", type=int, default=10)
-    parser.add_argument("--H", type=int, default=100)
     parser.add_argument("--depth", type=int, default=0)
     parser.add_argument("--s_dim", type=int, default=64)
     parser.add_argument("--a_dim", type=int, default=6)

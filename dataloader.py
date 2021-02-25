@@ -8,7 +8,6 @@ from torch.utils.data import Dataset, DataLoader
 class MyDataset(Dataset):
     def __init__(self, mode, epoch, args):
         self.T = args.T
-        self.H = args.H
         
         data_path = os.path.join(args.data_dir, "{}{}.pkl".format(mode, epoch))
         with open(data_path, mode='rb') as f:
@@ -18,6 +17,7 @@ class MyDataset(Dataset):
                                dtype=np.float32)
         self.traj_o = np.array([data[i][1] for i in range(len(data))],
                                dtype=np.float32)
+        self.H = self.traj_a.shape[1]
         print(self.traj_a.shape, self.traj_o.shape)
 
         param_path = os.path.join(args.data_dir, "param{}.pkl".format(epoch))
