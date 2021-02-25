@@ -17,7 +17,7 @@ def main(args=None):
     parser.add_argument("--data_dir", type=str, default="./data/")
     parser.add_argument("--epochs", type=int, default=20)
     parser.add_argument("--iters_to_accumulate", type=int, default=1)
-    parser.add_argument("--B", type=int, default=64)
+    parser.add_argument("--B", type=int, default=256)
     parser.add_argument("--T", type=int, default=10)
     parser.add_argument("--depth", type=int, default=0)
     parser.add_argument("--s_dim", type=int, default=64)
