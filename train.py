@@ -19,7 +19,6 @@ def main(args=None):
     parser.add_argument("--iters_to_accumulate", type=int, default=1)
     parser.add_argument("--B", type=int, default=256)
     parser.add_argument("--T", type=int, default=10)
-    parser.add_argument("--depth", type=int, default=0)
     parser.add_argument("--s_dim", type=int, default=64)
     parser.add_argument("--a_dim", type=int, default=6)
     parser.add_argument("--o_dim", type=int, default=17)
@@ -47,8 +46,8 @@ def main(args=None):
     
     # main
     model = SSM(args)
-    train_loader = MyDataLoader("train", args.depth, args)
-    test_loader = MyDataLoader("test", args.depth, args)
+    train_loader = MyDataLoader("train", args)
+    test_loader = MyDataLoader("test", args)
     trainer = Trainer(model,
                       train_loader,
                       test_loader,
