@@ -6,10 +6,10 @@ from torch.utils.data import Dataset, DataLoader
 
 
 class MyDataset(Dataset):
-    def __init__(self, mode, epoch, args):
+    def __init__(self, mode, args):
         self.T = args.T
         
-        data_path = os.path.join(args.data_dir, "{}{}.pkl".format(mode, epoch))
+        data_path = os.path.join(args.data_dir, "{}.pkl".format(mode))
         with open(data_path, mode='rb') as f:
             data = pickle.load(f)
 
@@ -20,7 +20,7 @@ class MyDataset(Dataset):
         self.H = self.traj_a.shape[1]
         print(self.traj_a.shape, self.traj_o.shape)
 
-        param_path = os.path.join(args.data_dir, "param{}.pkl".format(epoch))
+        param_path = os.path.join(args.data_dir, "param.pkl")
         if mode == 'train':
             with open(param_path, mode='wb') as f:
                 pickle.dump([
@@ -50,14 +50,13 @@ class MyDataset(Dataset):
 
 
 class MyDataLoader(DataLoader):
-    def __init__(self, mode, epoch, args):
+    def __init__(self, mode, args):
         self.mode = mode
         SEED = args.seed
         np.random.seed(SEED)
 
         dataset = MyDataset(
             mode=mode,
-            epoch=epoch,
             args=args,
         )
         super(MyDataLoader, self).__init__(dataset,
