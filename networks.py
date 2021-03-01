@@ -15,7 +15,7 @@ class Prior(nn.Module):
         h = F.relu(self.fc1(h))
         loc = self.fc21(h)
         scale = F.softplus(self.fc22(h))
-        return loc, scale
+        return loc, scale + 1e-1
 
 
 class Posterior(nn.Module):
@@ -32,7 +32,7 @@ class Posterior(nn.Module):
         h = F.relu(self.fc1(h))
         loc = self.fc21(h)
         scale = F.softplus(self.fc22(h))
-        return loc, scale
+        return loc, scale + 1e-1
 
 
 class Encoder(nn.Module):
